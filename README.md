@@ -14,7 +14,6 @@ When a request for a byte range is sent to the resource loader delegate, an arra
 - [DataRequestLoader.swift](https://github.com/jaredsinclair/sodes-audio-example/blob/master/Sodes/SodesAudio/DataRequestLoader.swift)
 - [ResourceLoaderSubrequest.swift](https://github.com/jaredsinclair/sodes-audio-example/blob/master/Sodes/SodesAudio/ResourceLoaderSubrequest.swift)
 - [PlaybackController.swift](https://github.com/jaredsinclair/sodes-audio-example/blob/master/Sodes/SodesAudio/PlaybackController.swift)
-- 
 
 ## Sample App Screenshot
 
