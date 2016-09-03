@@ -4,11 +4,13 @@ An example AVResourceLoaderDelegate implementation. A variation of this will be 
 
 ## What It Does
 
-Contains an example implementation of an AVAssetResourceLoaderDelegate which downloads the requested byte range to a "scratch file." It also re-uses previously-downloaded byte ranges from that scratch file to service future requests that overlap those byte ranges, both during the current app session and in future sessions.
+Contains an example implementation of an AVAssetResourceLoaderDelegate which downloads the requested byte ranges to a "scratch file" of locally-cached byte ranges. It also re-uses previously-downloaded byte ranges from that scratch file to service future requests that overlap the downloaded byte ranges, both during the current app session and in future sessions. This helps limit the number of times the same bits are downloaded when streaming a podcast episode over more than one app session. Ideally each bit should only ever be downloaded once.
 
-It also contains an example application so you can see it in action.
+When a request for a byte range is sent to the resource loader delegate, an array of "subrequests" is formed which are either scratch file requests or network requests. Scratch file requests read the data from existing byte ranges in the scratch file which have already been downloaded. Network requests are made for any gaps in the scratch file. The results of network requests are both passed to the AVAssetResourceLoader and written to the scratch file to be re-used later if the need arises.
 
 ## Sample App Screenshot
+
+This repository also contains an example application so you can see it in action.
 
 You can see below some basic play controls, as well as a text view that prints out the byte ranges that have been successfully written to the current scratch file. 
 
