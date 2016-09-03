@@ -14,3 +14,7 @@ You can see below some basic play controls, as well as a text view that prints o
 Delete and reinstall the app to clear out the scratch file (or change the hard-coded MP3 URL to some other MP3 url and rebuild and run).
 
 <img src="https://raw.githubusercontent.com/jaredsinclair/sodes-audio-example/master/screenshot.png" width="375">
+
+## Acknowledgements
+
+Contains a modified copy of [CommonCryptoSwift](https://github.com/onmyway133/Arcane), a convenient wrapper around CommonCrypto that can be used in a Swift framework.
