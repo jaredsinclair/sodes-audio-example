@@ -336,9 +336,9 @@ internal class ResourceLoaderDelegate: NSObject, AVAssetResourceLoaderDelegate {
         
         SodesLog("Can handle this data request.")
         
-        let lowerBound = avDataRequest.requestedOffset
-        let length = avDataRequest.requestedLength
-        let upperBound = lowerBound + length
+        let lowerBound = avDataRequest.requestedOffset  // e.g. 0, for Range(0..<4)
+        let length = avDataRequest.requestedLength      // e.g. 3, for Range(0..<4)
+        let upperBound = lowerBound + length            // e.g. 4, for Range(0..<4)
         let dataRequest: DataRequest = {
             let loader = DataRequestLoader(
                 resourceUrl: originalURL,
