@@ -44,8 +44,6 @@
 		479A771D1D673E94000C9C75 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479A771C1D673E94000C9C75 /* Data.swift */; };
 		479A771F1D6740E6000C9C75 /* URLRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479A771E1D6740E6000C9C75 /* URLRequestTests.swift */; };
 		479A77211D6743A2000C9C75 /* DataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479A77201D6743A2000C9C75 /* DataTests.swift */; };
-		479A77231D67458E000C9C75 /* ResourceLoaderDelegateTestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479A77221D67458E000C9C75 /* ResourceLoaderDelegateTestable.swift */; };
-		479A77251D674793000C9C75 /* ResourceLoaderDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479A77241D674793000C9C75 /* ResourceLoaderDelegateTests.swift */; };
 		47AAD5931D557F160025A72C /* ScratchFileInfoSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAD5921D557F160025A72C /* ScratchFileInfoSerialization.swift */; };
 		47AAD5951D55810C0025A72C /* ByteRangeSerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAD5941D55810C0025A72C /* ByteRangeSerializationTests.swift */; };
 		47AAD5A51D55874E0025A72C /* SodesFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AAD59B1D55874D0025A72C /* SodesFoundation.framework */; };
@@ -194,8 +192,6 @@
 		479A771C1D673E94000C9C75 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		479A771E1D6740E6000C9C75 /* URLRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestTests.swift; sourceTree = "<group>"; };
 		479A77201D6743A2000C9C75 /* DataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTests.swift; sourceTree = "<group>"; };
-		479A77221D67458E000C9C75 /* ResourceLoaderDelegateTestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceLoaderDelegateTestable.swift; sourceTree = "<group>"; };
-		479A77241D674793000C9C75 /* ResourceLoaderDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceLoaderDelegateTests.swift; sourceTree = "<group>"; };
 		47AAD5921D557F160025A72C /* ScratchFileInfoSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScratchFileInfoSerialization.swift; sourceTree = "<group>"; };
 		47AAD5941D55810C0025A72C /* ByteRangeSerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByteRangeSerializationTests.swift; sourceTree = "<group>"; };
 		47AAD59B1D55874D0025A72C /* SodesFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SodesFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,7 +284,6 @@
 				4731BB051D55350300FCF41B /* ByteRangeTests.swift */,
 				479A77201D6743A2000C9C75 /* DataTests.swift */,
 				4731BAF61D5534ED00FCF41B /* Info.plist */,
-				479A77241D674793000C9C75 /* ResourceLoaderDelegateTests.swift */,
 				47BCAAE11D55B633003C8E11 /* ResourceLoaderSubrequestTests.swift */,
 				479A771E1D6740E6000C9C75 /* URLRequestTests.swift */,
 				47843F6F1D68E813004CCFAD /* URLResponseTests.swift */,
@@ -311,7 +306,6 @@
 				47F953361D4C2305006A6C0C /* PlaybackSource.swift */,
 				479524971D5AB2D800097CAF /* Requests.swift */,
 				47F953371D4C2305006A6C0C /* ResourceLoaderDelegate.swift */,
-				479A77221D67458E000C9C75 /* ResourceLoaderDelegateTestable.swift */,
 				47BCAADF1D558D8B003C8E11 /* ResourceLoaderSubrequest.swift */,
 				4717AE7A1D641D7F006BB2CB /* ScratchFileInfo.swift */,
 				47AAD5921D557F160025A72C /* ScratchFileInfoSerialization.swift */,
@@ -727,7 +721,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				47BCAAE21D55B633003C8E11 /* ResourceLoaderSubrequestTests.swift in Sources */,
-				479A77251D674793000C9C75 /* ResourceLoaderDelegateTests.swift in Sources */,
 				47843F701D68E813004CCFAD /* URLResponseTests.swift in Sources */,
 				47AAD5951D55810C0025A72C /* ByteRangeSerializationTests.swift in Sources */,
 				4731BB061D55350300FCF41B /* ByteRangeTests.swift in Sources */,
@@ -741,7 +734,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				477F4C0B1D58429E00B95F29 /* DataRequestLoader.swift in Sources */,
-				479A77231D67458E000C9C75 /* ResourceLoaderDelegateTestable.swift in Sources */,
 				479524981D5AB2D800097CAF /* Requests.swift in Sources */,
 				47F9534F1D4C2312006A6C0C /* PlaybackController.swift in Sources */,
 				47F9534C1D4C2312006A6C0C /* ByteRange.swift in Sources */,

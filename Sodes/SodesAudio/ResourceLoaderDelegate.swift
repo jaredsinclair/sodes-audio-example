@@ -45,10 +45,8 @@ internal class ResourceLoaderDelegate: NSObject, AVAssetResourceLoaderDelegate {
     internal weak var delegate: ResourceLoaderDelegateDelegate?
     
     /// Provides initial chunks of data to speed up time-to-play when streaming.
+    /// This is deprecated and will not ever be used.
     internal weak var initialChunkCache: InitialChunkCache?
-    
-    /// Provides cache validation info to spare an initial roundtrip HEAD request.
-    internal weak var metaDataCache: MetadataCache?
     
     /// The current error status
     internal fileprivate(set) var errorStatus: ErrorStatus = .none
@@ -208,35 +206,6 @@ internal class ResourceLoaderDelegate: NSObject, AVAssetResourceLoaderDelegate {
         guard let scratchFileInfo = self.scratchFileInfo else {return false}
         
         SodesLog("Will handle content info request.")
-        
-        // This may be naive, but in practice it should work well often enough
-        // that the naivete poses a minimal risk. If our scratch file's 
-        // expected content length is the same as the expected length from the
-        // playback source provider's metadata, then well assume that our 
-        // scratch file is the same as the originally-posted item. This will
-        // pose a much larger risk if we ever start caching more than the 
-        // current episode. Since we're only caching the current episode, we can
-        // expect that the data will be more short-lived and thus exposed to
-        // a smaller risk of becoming invalid. If we're misjudging the risk, we
-        // could also toss the scratch file if it hasn't been touched in more
-        // than N hours.
-        
-        let disposition = ContentInfoRequestDisposition.disposition(
-            using: metaDataCache,
-            url: originalURL,
-            currentCacheInfo: scratchFileInfo.cacheInfo
-        )
-        
-        if case .useSimulatedResponse(let length) = disposition {
-            SodesLog("Using cached value for expected content length: \(length)")
-            infoRequest.contentLength = length
-            infoRequest.isByteRangeAccessSupported = true
-            infoRequest.contentType = "public/mp3"
-            loadingRequest.finishLoading()
-            return true
-        }
-        
-        SodesLog("Unable to use cached value for expected content length. Will make a content info request.")
         
         // Even though we re-use the downloaded bytes from a previous session,
         // we should always make a roundtrip for the content info requests so
@@ -472,12 +441,7 @@ fileprivate extension ResourceLoaderDelegate {
         if let (r,c) = FileManager.default.readRanges(at: metaDataUrl) {
             (ranges, cacheInfo) = (r, c)
         } else {
-            let info = ScratchFileInfo.CacheInfo(
-                contentLength: metaDataCache?.expectedLengthInBytes(for: resourceUrl),
-                etag: nil,
-                lastModified: nil
-            )
-            (ranges, cacheInfo) = ([], info)
+            (ranges, cacheInfo) = ([], .none)
         }
         
         SodesLog("Prepared info using directory:\n\(directory)\ncacheInfo: \(cacheInfo)")

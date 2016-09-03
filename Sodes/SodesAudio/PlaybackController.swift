@@ -22,11 +22,6 @@ public protocol WholeFileCache: class {
     func fileUrlForWholeFile(for resourceUrl: URL) -> URL?
 }
 
-/// Provides cache validation info to spare an initial roundtrip HEAD request.
-internal protocol MetadataCache: class {
-    func expectedLengthInBytes(for resourceUrl: URL) -> Int64?
-}
-
 /// Provides initial chunks of data to speed up time-to-play when streaming.
 public protocol InitialChunkCache: class {
     var initialChunkSize: Int64 {get}
@@ -279,7 +274,6 @@ public class PlaybackController: NSObject {
         _ = try? AVAudioSession.sharedInstance().setMode(AVAudioSessionModeSpokenAudio)
         
         resourceLoaderDelegate.delegate = self
-        resourceLoaderDelegate.metaDataCache = self
         registerCommandHandlers()
         
         player.addObserver(self, forKeyPath: "timeControlStatus", options: .new, context: &PlaybackControllerContext)
@@ -772,20 +766,6 @@ fileprivate extension PlaybackController {
             return .success
         case .idle, .preparing(_,_), .error(_):
             return .noActionableNowPlayingItem
-        }
-    }
-    
-}
-
-// MARK: Metadata Cache
-
-extension PlaybackController: MetadataCache {
-    
-    internal func expectedLengthInBytes(for resourceUrl: URL) -> Int64? {
-        if currentSource?.remoteUrl == resourceUrl {
-            return currentSource?.expectedLengthInBytes
-        } else {
-            return nil
         }
     }
     
