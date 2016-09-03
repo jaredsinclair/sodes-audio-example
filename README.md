@@ -8,6 +8,14 @@ Contains an example implementation of an AVAssetResourceLoaderDelegate which dow
 
 When a request for a byte range is sent to the resource loader delegate, an array of "subrequests" is formed which are either scratch file requests or network requests. Scratch file requests read the data from existing byte ranges in the scratch file which have already been downloaded. Network requests are made for any gaps in the scratch file. The results of network requests are both passed to the AVAssetResourceLoader and written to the scratch file to be re-used later if the need arises.
 
+## TL;DR Files
+
+- [ResourceLoaderDelegate.swift](https://github.com/jaredsinclair/sodes-audio-example/blob/master/Sodes/SodesAudio/ResourceLoaderDelegate.swift)
+- [DataRequestLoader.swift](https://github.com/jaredsinclair/sodes-audio-example/blob/master/Sodes/SodesAudio/DataRequestLoader.swift)
+- [ResourceLoaderSubrequest.swift](https://github.com/jaredsinclair/sodes-audio-example/blob/master/Sodes/SodesAudio/ResourceLoaderSubrequest.swift)
+- [PlaybackController.swift](https://github.com/jaredsinclair/sodes-audio-example/blob/master/Sodes/SodesAudio/PlaybackController.swift)
+- 
+
 ## Sample App Screenshot
 
 This repository also contains an example application so you can see it in action.
