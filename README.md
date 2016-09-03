@@ -1,5 +1,6 @@
 # sodes-audio-example
-An example AVResourceLoaderDelegate implementation.
+
+An example AVResourceLoaderDelegate implementation. A variation of this will be used in **’sodes**, a podcast app I'm working on.
 
 ## What It Does
 
