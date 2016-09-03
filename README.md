@@ -1,10 +1,14 @@
 # sodes-audio-example
 
-An example AVResourceLoaderDelegate implementation. A variation of this will be used in **’sodes**, a podcast app I'm working on.
+An example AVAssetResourceLoaderDelegate implementation. A variation of this will be used in **’sodes**, a podcast app I'm working on.
+
+This repo accompanies a blog post [which can be found here](http://blog.jaredsinclair.com/post/149892449150/avassetresourceloaderdelegate).
+
+You are welcome to use this code as allowed under the generous terms of the MIT License, but **this code is not intended to be used as a re-usable library**. It's highly optimized for the needs of my particular app. I'm sharing it here for the benefit of anyone who's looking for an example of how to write an AVAssetResourceLoaderDelegate implementation.
 
 ## What It Does
 
-Contains an example implementation of an AVAssetResourceLoaderDelegate which downloads the requested byte ranges to a "scratch file" of locally-cached byte ranges. It also re-uses previously-downloaded byte ranges from that scratch file to service future requests that overlap the downloaded byte ranges, both during the current app session and in future sessions. This helps limit the number of times the same bits are downloaded when streaming a podcast episode over more than one app session. Ideally each bit should only ever be downloaded once.
+Contains an example implementation of an AVAssetResourceLoaderDelegate which downloads the requested byte ranges to a "scratch file" of locally-cached byte ranges. It also re-uses previously-downloaded byte ranges from that scratch file to service future requests that overlap the downloaded byte ranges, both during the current app session and in future sessions. This helps limit the number of times the same bytes are downloaded when streaming a podcast episode over more than one app session. Ideally each byte should never be downloaded more than once.
 
 When a request for a byte range is sent to the resource loader delegate, an array of "subrequests" is formed which are either scratch file requests or network requests. Scratch file requests read the data from existing byte ranges in the scratch file which have already been downloaded. Network requests are made for any gaps in the scratch file. The results of network requests are both passed to the AVAssetResourceLoader and written to the scratch file to be re-used later if the need arises.
 
