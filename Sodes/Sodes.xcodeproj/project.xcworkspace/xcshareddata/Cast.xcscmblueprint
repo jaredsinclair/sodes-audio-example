@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0E1AB7D483F5968C839C9A65A2CE488A417D1236",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "EF7D7BF5F790B25DDE8A53D0271F72A88639FF4D" : 0,
+    "0E1AB7D483F5968C839C9A65A2CE488A417D1236" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CB11FFCE-794D-4414-98CB-06B53A512BCD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "EF7D7BF5F790B25DDE8A53D0271F72A88639FF4D" : "cast\/Dependencies\/CommonCrypto.swift\/",
+    "0E1AB7D483F5968C839C9A65A2CE488A417D1236" : "cast\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Cast",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Cast\/Cast.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jaredsinclair\/cast.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0E1AB7D483F5968C839C9A65A2CE488A417D1236"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jaredsinclair\/CommonCrypto.swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EF7D7BF5F790B25DDE8A53D0271F72A88639FF4D"
+    }
+  ]
+}

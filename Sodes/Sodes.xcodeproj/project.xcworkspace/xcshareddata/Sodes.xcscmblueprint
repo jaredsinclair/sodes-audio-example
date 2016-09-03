@@ -1,0 +1,51 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F2432A7C07C18E9E3B0A9ABC8FB552B3106DF9F9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "EF7D7BF5F790B25DDE8A53D0271F72A88639FF4D" : 0,
+    "151CF6AE7A27E25C386CB7C06129C46E18BDA023" : 0,
+    "EB2210CFD48672E403BED699D5D7F01B844069CF" : 9223372036854775807,
+    "0E1AB7D483F5968C839C9A65A2CE488A417D1236" : 0,
+    "F2432A7C07C18E9E3B0A9ABC8FB552B3106DF9F9" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E9EE63F7-A4C5-4163-BAA4-8C55549B40B3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "EF7D7BF5F790B25DDE8A53D0271F72A88639FF4D" : "sodes-sample\/Dependencies\/CommonCrypto.swift\/",
+    "151CF6AE7A27E25C386CB7C06129C46E18BDA023" : "sodes-sample\/Dependencies\/JTSReachability\/",
+    "EB2210CFD48672E403BED699D5D7F01B844069CF" : "sodes-sample\/Dependencies\/SWXMLHash\/",
+    "0E1AB7D483F5968C839C9A65A2CE488A417D1236" : "sodes-sample\/",
+    "F2432A7C07C18E9E3B0A9ABC8FB552B3106DF9F9" : "sodes-audio-example\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Sodes",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Sodes\/Sodes.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jaredsinclair\/cast.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0E1AB7D483F5968C839C9A65A2CE488A417D1236"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jaredsinclair\/JTSReachability.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "151CF6AE7A27E25C386CB7C06129C46E18BDA023"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jaredsinclair\/SWXMLHash.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EB2210CFD48672E403BED699D5D7F01B844069CF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jaredsinclair\/CommonCrypto.swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EF7D7BF5F790B25DDE8A53D0271F72A88639FF4D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:jaredsinclair\/sodes-audio-example.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F2432A7C07C18E9E3B0A9ABC8FB552B3106DF9F9"
+    }
+  ]
+}

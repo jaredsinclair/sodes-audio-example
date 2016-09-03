@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SodesExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kza-5x-fYR">
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kza-5x-fYR" secondAttribute="height" multiplier="1:1" id="J6H-Hj-quk"/>
+                                </constraints>
+                            </imageView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YCW-SS-eEa">
+                                <color key="progressTintColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="trackTintColor" red="0.50196081400000003" green="0.0" blue="1" alpha="0.24625538793103449" colorSpace="calibratedRGB"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lbt-hh-Mfn">
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="16"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:34" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ic-tJ-WKE">
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="16"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="xai-4W-0ms">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PM3-OV-Gh3">
+                                        <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
+                                        <state key="normal" title="-15">
+                                            <color key="titleColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x1U-KU-oUn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13x-C1-Afh">
+                                        <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
+                                        <state key="normal" title="PLAY/PAUSE">
+                                            <color key="titleColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="togglePlayPauseWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LvZ-WC-UCV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fj2-eY-hsa">
+                                        <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="20"/>
+                                        <state key="normal" title="+30">
+                                            <color key="titleColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="forwardWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="deH-7W-fi1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hE4-jd-3mC">
+                                <color key="color" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYP-Wx-6ZC">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zu3-Hb-FhN">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C2-eO-dMF">
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Lbt-hh-Mfn" firstAttribute="leading" secondItem="YCW-SS-eEa" secondAttribute="leading" id="1eE-X6-swB"/>
+                            <constraint firstItem="xai-4W-0ms" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="596-Wc-tqq"/>
+                            <constraint firstItem="7Ic-tJ-WKE" firstAttribute="top" secondItem="YCW-SS-eEa" secondAttribute="bottom" constant="8" id="9w8-wC-HnR"/>
+                            <constraint firstItem="IYP-Wx-6ZC" firstAttribute="width" secondItem="YCW-SS-eEa" secondAttribute="width" id="DIs-DD-D0B"/>
+                            <constraint firstItem="Zu3-Hb-FhN" firstAttribute="top" secondItem="hE4-jd-3mC" secondAttribute="bottom" id="HF9-ds-lDl"/>
+                            <constraint firstItem="YCW-SS-eEa" firstAttribute="top" secondItem="kza-5x-fYR" secondAttribute="bottom" constant="20" id="HLI-W7-Rb0"/>
+                            <constraint firstItem="YCW-SS-eEa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Jkf-bS-wIm"/>
+                            <constraint firstItem="hE4-jd-3mC" firstAttribute="centerX" secondItem="xai-4W-0ms" secondAttribute="centerX" id="KoG-Da-E1B"/>
+                            <constraint firstItem="9C2-eO-dMF" firstAttribute="height" secondItem="kza-5x-fYR" secondAttribute="height" id="LHk-nX-F96"/>
+                            <constraint firstItem="9C2-eO-dMF" firstAttribute="centerY" secondItem="kza-5x-fYR" secondAttribute="centerY" id="OUj-U0-Hh2"/>
+                            <constraint firstItem="Zu3-Hb-FhN" firstAttribute="height" secondItem="IYP-Wx-6ZC" secondAttribute="height" id="POt-7N-Wmh"/>
+                            <constraint firstItem="kza-5x-fYR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Psb-2G-Mp5"/>
+                            <constraint firstItem="Lbt-hh-Mfn" firstAttribute="top" secondItem="YCW-SS-eEa" secondAttribute="bottom" constant="8" id="QbE-Us-GZw"/>
+                            <constraint firstItem="Zu3-Hb-FhN" firstAttribute="width" secondItem="xai-4W-0ms" secondAttribute="width" id="Vwp-E4-Xhv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kza-5x-fYR" secondAttribute="trailing" constant="20" id="YMe-PT-zWF"/>
+                            <constraint firstItem="7Ic-tJ-WKE" firstAttribute="trailing" secondItem="YCW-SS-eEa" secondAttribute="trailing" id="Zz9-Yx-7T6"/>
+                            <constraint firstItem="kza-5x-fYR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="cia-JY-sMr"/>
+                            <constraint firstItem="xai-4W-0ms" firstAttribute="top" secondItem="Zu3-Hb-FhN" secondAttribute="bottom" id="eBa-up-46D"/>
+                            <constraint firstItem="IYP-Wx-6ZC" firstAttribute="centerX" secondItem="YCW-SS-eEa" secondAttribute="centerX" id="eG4-QD-234"/>
+                            <constraint firstItem="IYP-Wx-6ZC" firstAttribute="top" secondItem="7Ic-tJ-WKE" secondAttribute="bottom" id="fd8-93-RL1"/>
+                            <constraint firstItem="9C2-eO-dMF" firstAttribute="width" secondItem="kza-5x-fYR" secondAttribute="width" id="fyM-g9-LDu"/>
+                            <constraint firstItem="Zu3-Hb-FhN" firstAttribute="centerX" secondItem="xai-4W-0ms" secondAttribute="centerX" id="hK8-78-a1R"/>
+                            <constraint firstItem="9C2-eO-dMF" firstAttribute="centerX" secondItem="kza-5x-fYR" secondAttribute="centerX" id="kGX-ut-iAZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YCW-SS-eEa" secondAttribute="trailing" constant="20" id="ngZ-Mv-phD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xai-4W-0ms" secondAttribute="bottom" constant="20" id="u6V-FK-rKK"/>
+                            <constraint firstItem="hE4-jd-3mC" firstAttribute="top" secondItem="IYP-Wx-6ZC" secondAttribute="bottom" id="zeh-7P-ONM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="hE4-jd-3mC" id="24K-tk-86n"/>
+                        <outlet property="backButton" destination="PM3-OV-Gh3" id="N9n-QI-9Ld"/>
+                        <outlet property="byteRangeTextView" destination="9C2-eO-dMF" id="b5O-5V-FjE"/>
+                        <outlet property="elapsedTimeLabel" destination="Lbt-hh-Mfn" id="ezo-JS-wf6"/>
+                        <outlet property="forwardButton" destination="Fj2-eY-hsa" id="ILt-ib-S8q"/>
+                        <outlet property="playPauseButton" destination="13x-C1-Afh" id="yQO-Nc-0TW"/>
+                        <outlet property="progressBar" destination="YCW-SS-eEa" id="DwK-7J-SM8"/>
+                        <outlet property="remainingTimeLabel" destination="7Ic-tJ-WKE" id="Y22-lj-6xE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+        </scene>
+    </scenes>
+</document>
