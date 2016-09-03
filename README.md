@@ -1,4 +1,4 @@
 # sodes-audio-example
 An example AVResourceLoaderDelegate implementation
 
-!(screenshot)[https://github.com/jaredsinclair/sodes-audio-example/blob/master/screenshot.png]
+!(screenshot)[https://raw.githubusercontent.com/jaredsinclair/sodes-audio-example/master/screenshot.png]
