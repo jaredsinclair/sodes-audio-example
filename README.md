@@ -2,7 +2,7 @@
 
 An example AVAssetResourceLoaderDelegate implementation. A variation of this will be used in **’sodes**, a podcast app I'm working on.
 
-**You are welcome to use this code as allowed under the generous terms of the MIT License, but this code is not intended to be used as-is. It's highly optimized for the needs of my particular app. I'm sharing it here for the benefit of anyone who's looking for an example of how to write an AVAssetResourceLoaderDelegate implementation.
+You are welcome to use this code as allowed under the generous terms of the MIT License, but **this code is not intended to be used as a re-usable library**. It's highly optimized for the needs of my particular app. I'm sharing it here for the benefit of anyone who's looking for an example of how to write an AVAssetResourceLoaderDelegate implementation.
 
 ## What It Does
 
