@@ -39,9 +39,6 @@ class DataRequestLoader {
     /// servicing the request.
     fileprivate let scratchFileRanges: [ByteRange]
     
-    /// Provides initial chunks of data.
-    fileprivate weak var initialChunkCache: InitialChunkCache?
-    
     /// The callback queue on which HTTP callbacks are received.
     fileprivate let httpCallbackQueue: OperationQueue
     
@@ -71,10 +68,9 @@ class DataRequestLoader {
     // MARK: Init
     
     /// Designated initializer.
-    init(resourceUrl: URL, requestedRange: ByteRange, delegate: DataRequestLoaderDelegate, callbackQueue: DispatchQueue, scratchFileHandle: SODSwiftableFileHandle, scratchFileRanges: [ByteRange], initialChunkCache: InitialChunkCache?) {
+    init(resourceUrl: URL, requestedRange: ByteRange, delegate: DataRequestLoaderDelegate, callbackQueue: DispatchQueue, scratchFileHandle: SODSwiftableFileHandle, scratchFileRanges: [ByteRange]) {
         self.resourceUrl = resourceUrl
         self.requestedRange = requestedRange
-        self.initialChunkCache = initialChunkCache
         self.callbackQueue = callbackQueue
         self.httpCallbackQueue = {
            let queue = OperationQueue()
@@ -99,8 +95,7 @@ class DataRequestLoader {
         guard !cancelled && !failed else {return}
         let subrequests = ResourceLoaderSubrequest.subrequests(
             requestedRange: requestedRange,
-            scratchFileRanges: scratchFileRanges,
-            initialChunkCacheRange: initialChunkCache?.initialChunkRange(for: resourceUrl)
+            scratchFileRanges: scratchFileRanges
         )
         SodesLog("Starting for requestedRange: \(requestedRange), scratchFileRanges: \(scratchFileRanges). Will enqueue operations for subrequests: \(subrequests)")
         operationQueue.addOperations(newOperations(for: subrequests), waitUntilFinished: false)
@@ -118,37 +113,10 @@ class DataRequestLoader {
     fileprivate func newOperations(for subrequests: [ResourceLoaderSubrequest]) -> [Operation] {
         return subrequests.map { (subrequest) -> Operation in
             switch subrequest.source {
-            case .initialChunkCache:
-                return newInitialChunkCacheOperation(for: subrequest.range)
             case .scratchFile:
                 return newScratchFileOperation(for: subrequest.range)
             case .network:
                 return newNetworkRequestOperation(for: resourceUrl, range: subrequest.range)
-            }
-        }
-    }
-    
-    /// Creates an operation which will load `range` from the initial chunk cache.
-    fileprivate func newInitialChunkCacheOperation(for range: ByteRange) -> Operation {
-        return BlockOperation { [weak self] in
-            guard let this = self else {return}
-            guard !this.cancelled && !this.failed else {return}
-            SodesLog("Will read data from inital chunk cache for range: \(range)")
-            let chunk = this.initialChunkCache?.initialChunk(for: this.resourceUrl)
-            if let subdata = chunk?.byteRangeResponseSubdata(in: range) {
-                this.currentOffset = range.upperBound
-                this.callbackQueue.sync { [weak this] in
-                    guard let this = this else {return}
-                    guard !this.cancelled && !this.failed else {return}
-                    this.delegate?.dataRequestLoader(this, didReceive: subdata, forSubrange: range)
-                }
-            } else {
-                let fallbackOp: Operation = {
-                    let op = this.newNetworkRequestOperation(for: this.resourceUrl, range: range)
-                    op.queuePriority = .veryHigh
-                    return op
-                }()
-                this.operationQueue.addOperation(fallbackOp)
             }
         }
     }

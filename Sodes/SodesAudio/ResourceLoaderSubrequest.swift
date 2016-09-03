@@ -15,7 +15,6 @@ struct ResourceLoaderSubrequest: Equatable, CustomStringConvertible {
     
     /// The sources from which data can be read.
     enum Source {
-        case initialChunkCache
         case scratchFile
         case network
     }
@@ -30,8 +29,6 @@ struct ResourceLoaderSubrequest: Equatable, CustomStringConvertible {
     var description: String {
         var s = "ResourceLoaderSubrequest("
         switch source {
-        case .initialChunkCache:
-            s += ".initialChunkCache"
         case .scratchFile:
             s += ".scratchFile"
         case .network:
@@ -53,18 +50,9 @@ extension ResourceLoaderSubrequest {
     /// Creates an array of subrequests. It will create scratch file subrequests
     /// for data already loaded in `scratchFileRanges`, and network subrequests
     /// for any gaps in the requested range not found in `scratchFileRanges`.
-    static func subrequests(requestedRange: ByteRange, scratchFileRanges: [ByteRange], initialChunkCacheRange: ByteRange?) -> [ResourceLoaderSubrequest] {
+    static func subrequests(requestedRange: ByteRange, scratchFileRanges: [ByteRange]) -> [ResourceLoaderSubrequest] {
         
-        var requestedRange = requestedRange
-        var subrequests = [ResourceLoaderSubrequest]()
-        
-        if let initialChunkCacheRange = initialChunkCacheRange {
-            if let leading = initialChunkCacheRange.leadingIntersection(in: requestedRange) {
-                requestedRange = initialChunkCacheRange.trailingRange(in: requestedRange)!
-                let subrequest = ResourceLoaderSubrequest(source: .initialChunkCache, range: leading)
-                subrequests.append(subrequest)
-            }
-        }
+        var subrequests: [ResourceLoaderSubrequest] = []
         
         let intersectingRanges = scratchFileRanges
             .filter{$0.intersects(requestedRange)}

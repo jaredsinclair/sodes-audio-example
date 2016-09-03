@@ -44,10 +44,6 @@ internal class ResourceLoaderDelegate: NSObject, AVAssetResourceLoaderDelegate {
     /// The ResourceLoaderDelegate's, err..., delegate.
     internal weak var delegate: ResourceLoaderDelegateDelegate?
     
-    /// Provides initial chunks of data to speed up time-to-play when streaming.
-    /// This is deprecated and will not ever be used.
-    internal weak var initialChunkCache: InitialChunkCache?
-    
     /// The current error status
     internal fileprivate(set) var errorStatus: ErrorStatus = .none
     
@@ -350,8 +346,7 @@ internal class ResourceLoaderDelegate: NSObject, AVAssetResourceLoaderDelegate {
                 delegate: self,
                 callbackQueue: loaderQueue,
                 scratchFileHandle: scratchFileInfo.fileHandle,
-                scratchFileRanges: scratchFileInfo.loadedByteRanges,
-                initialChunkCache: initialChunkCache
+                scratchFileRanges: scratchFileInfo.loadedByteRanges
             )
             return DataRequest(
                 resourceUrl: originalURL,

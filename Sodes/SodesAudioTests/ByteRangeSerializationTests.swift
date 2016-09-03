@@ -46,7 +46,7 @@ class ByteRangeSerializationTests: XCTestCase {
     // MARK: File Management
     
     func testItSavesByteRangesAndReadsThemBack() {
-        let directory = FileManagement.cachesDirectory()!
+        let directory = FileManager.default.cachesDirectory()!
         let fileUrl = directory.appendingPathComponent(UUID().uuidString, isDirectory: false)
         let inputRanges: [ByteRange] = [(0..<1), (3..<10)]
         let inputDate = Date()
@@ -64,7 +64,7 @@ class ByteRangeSerializationTests: XCTestCase {
     
     func testItSavesByteRangesTwiceAndReadsThemBack() {
         
-        let directory = FileManagement.cachesDirectory()!
+        let directory = FileManager.default.cachesDirectory()!
         let fileUrl = directory.appendingPathComponent(NSUUID().uuidString, isDirectory: false)
         let inputRanges1: [ByteRange] = [(0..<1), (3..<10)]
         let inputRanges2: [ByteRange] = [(0..<1), (16..<20), (3..<10)]

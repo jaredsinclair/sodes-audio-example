@@ -22,24 +22,6 @@ public protocol WholeFileCache: class {
     func fileUrlForWholeFile(for resourceUrl: URL) -> URL?
 }
 
-/// Provides initial chunks of data to speed up time-to-play when streaming.
-public protocol InitialChunkCache: class {
-    var initialChunkSize: Int64 {get}
-    func hasInitialChunk(for resourceUrl: URL) -> Bool
-    func initialChunk(for resourceUrl: URL) -> Data?
-}
-
-/// Convenience
-extension InitialChunkCache {
-    func initialChunkRange(for resourceUrl: URL) -> ByteRange? {
-        if hasInitialChunk(for: resourceUrl) {
-            return (0..<initialChunkSize)
-        } else {
-            return nil
-        }
-    }
-}
-
 /// The various notifications posted by PlaybackController.
 public enum PlaybackControllerNotification: String {
     
@@ -122,11 +104,6 @@ public class PlaybackController: NSObject {
     
     /// Provides access to locally-cached audio files.
     public weak var wholeFileCache: WholeFileCache?
-    
-    /// Provides initial chunks of data to speed up time-to-play when streaming.
-    public weak var initialChunkCache: InitialChunkCache? {
-        didSet { resourceLoaderDelegate.initialChunkCache = initialChunkCache }
-    }
     
     // MARK: Public Properties (Read/Write)
     

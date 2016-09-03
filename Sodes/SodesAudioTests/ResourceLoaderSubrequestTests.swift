@@ -15,8 +15,7 @@ class ResourceLoaderSubrequestTests: XCTestCase {
         let requestedRange: ByteRange = (10..<600)
         let subrequests = ResourceLoaderSubrequest.subrequests(
             requestedRange: requestedRange,
-            scratchFileRanges: [],
-            initialChunkCacheRange: nil
+            scratchFileRanges: []
         )
         XCTAssertEqual(subrequests.count, 1)
         XCTAssertEqual(subrequests[0], ResourceLoaderSubrequest(source: .network, range: requestedRange))
@@ -26,8 +25,7 @@ class ResourceLoaderSubrequestTests: XCTestCase {
         let requestedRange: ByteRange = (10..<600)
         let subrequests = ResourceLoaderSubrequest.subrequests(
             requestedRange: requestedRange,
-            scratchFileRanges: [(0..<1000)],
-            initialChunkCacheRange: nil
+            scratchFileRanges: [(0..<1000)]
         )
         XCTAssertEqual(subrequests.count, 1)
         XCTAssertEqual(subrequests[0], ResourceLoaderSubrequest(source: .scratchFile, range: requestedRange))
@@ -37,8 +35,7 @@ class ResourceLoaderSubrequestTests: XCTestCase {
         let requestedRange: ByteRange = (10..<600)
         let subrequests = ResourceLoaderSubrequest.subrequests(
             requestedRange: requestedRange,
-            scratchFileRanges: [(100..<200), (300..<400), (500..<550)],
-            initialChunkCacheRange: nil
+            scratchFileRanges: [(100..<200), (300..<400), (500..<550)]
         )
         XCTAssertEqual(subrequests.count, 7)
         let expected = [
@@ -57,8 +54,7 @@ class ResourceLoaderSubrequestTests: XCTestCase {
         let requestedRange: ByteRange = (10..<600)
         let subrequests = ResourceLoaderSubrequest.subrequests(
             requestedRange: requestedRange,
-            scratchFileRanges: [(100..<200), (300..<400), (500..<600)],
-            initialChunkCacheRange: nil
+            scratchFileRanges: [(100..<200), (300..<400), (500..<600)]
         )
         XCTAssertEqual(subrequests.count, 6)
         let expected = [
@@ -76,8 +72,7 @@ class ResourceLoaderSubrequestTests: XCTestCase {
         let requestedRange: ByteRange = (0..<3)
         let subrequests = ResourceLoaderSubrequest.subrequests(
             requestedRange: requestedRange,
-            scratchFileRanges: [(1..<2)],
-            initialChunkCacheRange: nil
+            scratchFileRanges: [(1..<2)]
         )
         XCTAssertEqual(subrequests.count, 3)
         let expected = [
@@ -92,8 +87,7 @@ class ResourceLoaderSubrequestTests: XCTestCase {
         let requestedRange: ByteRange = (1..<2)
         let subrequests = ResourceLoaderSubrequest.subrequests(
             requestedRange: requestedRange,
-            scratchFileRanges: [(0..<3)],
-            initialChunkCacheRange: nil
+            scratchFileRanges: [(0..<3)]
         )
         XCTAssertEqual(subrequests.count, 1)
         let expected = [
@@ -106,8 +100,7 @@ class ResourceLoaderSubrequestTests: XCTestCase {
         let requestedRange: ByteRange = (0..<10)
         let subrequests = ResourceLoaderSubrequest.subrequests(
             requestedRange: requestedRange,
-            scratchFileRanges: [(0..<5)],
-            initialChunkCacheRange: nil
+            scratchFileRanges: [(0..<5)]
         )
         XCTAssertEqual(subrequests.count, 2)
         let expected = [
@@ -121,89 +114,12 @@ class ResourceLoaderSubrequestTests: XCTestCase {
         let requestedRange: ByteRange = (2..<10)
         let subrequests = ResourceLoaderSubrequest.subrequests(
             requestedRange: requestedRange,
-            scratchFileRanges: [(0..<2), (2..<5), (4..<10)],
-            initialChunkCacheRange: nil
+            scratchFileRanges: [(0..<2), (2..<5), (4..<10)]
         )
         XCTAssertEqual(subrequests.count, 2)
         let expected = [
             ResourceLoaderSubrequest(source: .scratchFile,  range: (2..<5)),
             ResourceLoaderSubrequest(source: .scratchFile,  range: (5..<10)),
-            ]
-        XCTAssertEqual(subrequests, expected)
-    }
-    
-    func testItProducesCorrectSubrequests_variant7() {
-        let requestedRange: ByteRange = (0..<10)
-        let subrequests = ResourceLoaderSubrequest.subrequests(
-            requestedRange: requestedRange,
-            scratchFileRanges: [(2..<10)],
-            initialChunkCacheRange: (0..<2)
-        )
-        XCTAssertEqual(subrequests.count, 2)
-        let expected = [
-            ResourceLoaderSubrequest(source: .initialChunkCache,  range: (0..<2)),
-            ResourceLoaderSubrequest(source: .scratchFile,  range: (2..<10)),
-            ]
-        XCTAssertEqual(subrequests, expected)
-    }
-    
-    func testItProducesCorrectSubrequests_variant8() {
-        let requestedRange: ByteRange = (0..<10)
-        let subrequests = ResourceLoaderSubrequest.subrequests(
-            requestedRange: requestedRange,
-            scratchFileRanges: [(7..<10)],
-            initialChunkCacheRange: (0..<2)
-        )
-        XCTAssertEqual(subrequests.count, 3)
-        let expected = [
-            ResourceLoaderSubrequest(source: .initialChunkCache,  range: (0..<2)),
-            ResourceLoaderSubrequest(source: .network,  range: (2..<7)),
-            ResourceLoaderSubrequest(source: .scratchFile,  range: (7..<10)),
-            ]
-        XCTAssertEqual(subrequests, expected)
-    }
-    
-    func testItProducesCorrectSubrequests_variant10() {
-        let requestedRange: ByteRange = (0..<10)
-        let subrequests = ResourceLoaderSubrequest.subrequests(
-            requestedRange: requestedRange,
-            scratchFileRanges: [(3..<10)],
-            initialChunkCacheRange: (0..<5)
-        )
-        XCTAssertEqual(subrequests.count, 2)
-        let expected = [
-            ResourceLoaderSubrequest(source: .initialChunkCache,  range: (0..<5)),
-            ResourceLoaderSubrequest(source: .scratchFile,  range: (5..<10)),
-            ]
-        XCTAssertEqual(subrequests, expected)
-    }
-    
-    func testItProducesCorrectSubrequests_variant11() {
-        let requestedRange: ByteRange = (10..<20)
-        let subrequests = ResourceLoaderSubrequest.subrequests(
-            requestedRange: requestedRange,
-            scratchFileRanges: [(13..<20)],
-            initialChunkCacheRange: (0..<5)
-        )
-        XCTAssertEqual(subrequests.count, 2)
-        let expected = [
-            ResourceLoaderSubrequest(source: .network,  range: (10..<13)),
-            ResourceLoaderSubrequest(source: .scratchFile,  range: (13..<20)),
-            ]
-        XCTAssertEqual(subrequests, expected)
-    }
-    
-    func testItProducesCorrectSubrequests_variant12() {
-        let requestedRange: ByteRange = (10..<20)
-        let subrequests = ResourceLoaderSubrequest.subrequests(
-            requestedRange: requestedRange,
-            scratchFileRanges: [(13..<20)],
-            initialChunkCacheRange: (0..<15)
-        )
-        XCTAssertEqual(subrequests.count, 2)
-        let expected = [
-            ResourceLoaderSubrequest(source: .initialChunkCache,  range: (10..<15)),
-            ResourceLoaderSubrequest(source: .scratchFile,  range: (15..<20)),
             ]
         XCTAssertEqual(subrequests, expected)
     }
