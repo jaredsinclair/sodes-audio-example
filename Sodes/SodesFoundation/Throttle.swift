@@ -47,7 +47,7 @@ public class Throttle {
         timer = nil
     }
     
-    public func enqueue(immediately: Bool = false, action: Action) {
+    public func enqueue(immediately: Bool = false, action: @escaping Action) {
         let op = BlockOperation { [weak self] in
             guard let this = self else {return}
             if !this.hasTakenActionAtLeastOnce || immediately {

@@ -11,21 +11,21 @@ import Foundation
 public class AsyncBlockOperation: WorkOperation {
     
     public typealias FinishHandler = () -> Void
-    public typealias WorkBlock = (FinishHandler) -> Void
+    public typealias WorkBlock = (@escaping FinishHandler) -> Void
     
     private let workBlock: WorkBlock
     
-    public init(work: WorkBlock) {
+    public init(work: @escaping WorkBlock) {
         self.workBlock = work
         super.init{}
     }
     
-    public init(work: WorkBlock, completion: @escaping () -> Void) {
+    public init(work: @escaping WorkBlock, completion: @escaping () -> Void) {
         self.workBlock = work
         super.init(completion: completion)
     }
     
-    override public func work(_ finish: FinishHandler) {
+    override public func work(_ finish: @escaping FinishHandler) {
         workBlock(finish)
     }
     
